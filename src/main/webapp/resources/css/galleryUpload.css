@@ -1,0 +1,504 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+/* font-family: 'Roboto', sans-serif; */
+
+/* 나눔바른고딕 */
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+/* 고딕 아니고 고딩 */
+@font-face {
+    font-family: 'Gothic_Goding';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Gothic_Goding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#wrap {
+    color: #333;
+    font-family: 'NanumBarunGothic';
+    font-size: 14px;
+    width: 100%; height: 100%;
+}
+
+.inner_size {
+    margin: 110px auto;
+    width: 700px; height: 100%;
+}
+
+.content {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 30px 30px 60px 30px;
+    width: 100%; height: 100%;
+}
+
+.content .login {
+    position: absolute;
+    top: 45px;
+    right: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.content .title {
+    border-bottom: 2px solid #f85b75;
+    margin-bottom: 20px;
+}
+.content .title .t1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+.content .title .t2{
+    display: flex;
+    font-size: 15px;
+    margin-top: 15px;
+    line-height: 40px;
+    width: 100%; height: 40px;
+}
+.content .title .t2 p {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.content .title .t2 input{
+    font-family: 'NanumBarunGothic';
+    padding-left: 10px;
+    padding-top: 2px;
+    font-size: 16px;
+    width: 80%;  height: 100%;
+}
+.allcheck {
+    position: absolute;
+    top: 125px;
+    left: 37px;
+    background-color: #fc4d4d;
+    color: #fff;
+    font-family: 'NanumBarunGothic';
+    font-size: 13px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+    width: 70px; height: 30px;
+}
+.selectDelete {
+    position: absolute;
+    top: 125px;
+    left: 112px;
+    background-color: #333;
+    color: #fff;
+    font-family: 'NanumBarunGothic';
+    font-size: 13px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+    width: 70px; height: 30px;
+}
+.allcheck.on{}
+
+.ck_box {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.content .photo {
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    flex-direction: start;
+    flex-wrap: wrap;
+    width: 100%; height: 100%;
+}
+
+.content .photo {
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    flex-direction: start;
+    flex-wrap: wrap;
+    cursor: pointer;
+    width: 100%; height: 100%;
+}
+.content .photo .image {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    margin: 6.3px;
+    align-items: center;
+    text-align: center;
+    width: 31.2%; height: auto;
+}
+.content .photo .image.on {
+    border: 1px solid #ff87b5 ;
+}
+.content .photo .image a {
+    display: flex;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    z-index:1000;
+    width: 100%; height: 100% ;
+}
+.content .photo .image img{
+    object-fit: cover;
+    margin: auto;
+    max-width: 100%; height: auto;
+}
+.content .photo > .image .delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s;
+    width: 40px; height: 40px;
+}
+.content .photo > .image .delete:hover {
+    background-color: rgba(255, 56, 99, 0.4);
+}
+
+.content .photo > .image .delete span:first-child{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    background-color: #333;
+    border-radius: 10px;
+    transition: all 0.2s;
+    width: 25px; height: 2px;
+}
+.content .photo > .image .delete span:last-child{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%) rotate(-45deg);
+    background-color: #333;
+    border-radius: 10px;
+    transition: all 0.2s;
+    width: 25px; height: 2px;
+}
+.content .photo > .image .delete:hover span{
+    background-color: #fff;
+}
+.content #upload {
+    position: absolute;
+    right: 23px;
+    top: 95px;
+    width: 180px;
+} 
+.content .textbox {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 100%; height: 180px;
+}
+.content .textbox textarea{
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%; height: 180px;
+}
+.content .btn_box {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 210px;
+}
+.content .btn_box > div {
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    overflow: hidden;
+    justify-content: space-between;
+    width: 100px; height: 40px;
+}
+
+.content .btn_box .upload_btn {
+    background-color: #333;
+    color: #fff;
+}
+.content .btn_box .cancel {
+    background-color: #969696;
+    color: #fff;
+}
+
+.nodata {
+	color: #fc4d4d;
+	font-weight: 600;
+	text-align: center;
+	line-height: 100px;
+	width: 100%; height:100px;
+}
+
+.uploadQ {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%; height: 100%;
+}
+.uploadQ.on{
+    display: block;
+}
+.uploadQ .alert_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+    text-align: center;
+    padding-top: 60px;
+    font-weight: 600;
+    width: 400px; height: 200px;
+}
+.uploadQ .alert_box .wran {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #f32648;
+}
+.uploadQ .alert_box .btn_box{
+    display: flex;
+}
+.uploadQ .alert_box .btn_box > div {
+    position: absolute;
+    bottom: 50px;
+    border: 1px solid #ddd;
+    line-height: 30px;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 95px; height: 30px;
+}
+.uploadQ .alert_box .btn_box > div:hover {
+    background-color: #858585;
+    color: #fff;
+}
+
+.uploadQ .alert_box .btn_box .yesQ {
+    left: 100px;
+}
+.uploadQ .alert_box .btn_box .noQ {
+    right: 100px;
+}
+
+.titleQ {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%; height: 100%;
+}
+
+.titleQ.on{
+    display: block;
+}
+
+.titleQ .alert_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding-top: 65px;
+    font-weight: 600;
+    width: 400px; height: 200px;
+}
+
+.titleQ .alert_box .btn_box{
+    display: flex;
+}
+.titleQ .alert_box .btn_box > div {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ddd;
+    line-height: 35px;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 100px; height: 35px;
+}
+.titleQ .alert_box .btn_box > div:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.pictureQ {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%; height: 100%;
+}
+
+.pictureQ.on{
+    display: block;
+}
+
+.pictureQ .alert_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding-top: 65px;
+    font-weight: 600;
+    width: 400px; height: 200px;
+}
+
+.pictureQ .alert_box .btn_box{
+    display: flex;
+}
+.pictureQ .alert_box .btn_box > div {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ddd;
+    line-height: 35px;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 100px; height: 35px;
+}
+.pictureQ .alert_box .btn_box > div:hover {
+    background-color: #555;
+    color: #fff;
+}
+.successQ {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%; height: 100%;
+}
+
+.successQ.on{
+    display: block;
+}
+
+.successQ .alert_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding-top: 65px;
+    font-weight: 600;
+    width: 400px; height: 200px;
+}
+
+
+.successQ .alert_box .btn_box{
+    display: flex;
+}
+.successQ .alert_box .btn_box > div {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ddd;
+    line-height: 35px;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 100px; height: 35px;
+}
+.successQ .alert_box .btn_box > div:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.maxCountQ {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%; height: 100%;
+}
+
+.maxCountQ.on{
+    display: block;
+}
+
+.maxCountQ .alert_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding-top: 65px;
+    font-weight: 600;
+    width: 400px; height: 200px;
+}
+
+
+.maxCountQ .alert_box .btn_box{
+    display: flex;
+}
+.maxCountQ .alert_box .btn_box > div {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ddd;
+    line-height: 35px;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 100px; height: 35px;
+}
+.maxCountQ .alert_box .btn_box > div:hover {
+    background-color: #555;
+    color: #fff;
+}
+.loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%; height: 100%;
+}
+.loading.on {
+    display: block;
+}
+
+.loading .loading1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; height: 100px;
+}
+
+.loading .loading1 img {
+    width: 100%; height: 100%;
+}

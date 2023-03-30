@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gallery">
+
+
+	<insert id="galleryPOST" parameterType="com.photo.demo.vo.GalleryVO">
+		insert into gallery(
+			galleryId,
+			boardTitle,
+			boardContent,
+			boardUploadDate
+
+		)
+		values(
+			#{galleryId},
+			#{boardTitle},
+			#{boardContent},
+			sysdate()
+
+		);
+		
+		<selectKey resultType="int" keyProperty="boardNo" order="AFTER">
+  			SELECT LAST_INSERT_ID()
+  		</selectKey>
+	</insert>
+	
+	<insert id="saveImgFile">
+		insert into uploadImage(
+			boardNo,
+			galleryId,
+			uploadPath,
+			imguuid,
+			fileName
+
+		)
+		values(
+			#{boardNo},
+			#{galleryId},
+			#{uploadPath},
+			#{imguuid},
+			#{fileName}
+
+		);
+	</insert>
+	
+	<select id="galleryDetail" resultType="com.photo.demo.vo.GalleryVO" >
+		select
+			*
+		from
+			gallery
+		where
+			boardNo = #{boardNo}
+
+	</select>
+	
+	<select id="galleryDetailImg" parameterType="java.lang.Integer" resultType="com.photo.demo.vo.UploadImageVO" >
+		select
+			*
+		from
+			uploadImage
+		where
+			boardNo = #{boardNo}
+	</select>
+	
+	
+	<select id="galleryList" resultType="com.photo.demo.vo.ImgListVO" >
+		select
+			A.boardNo, A.galleryId,A.boardTitle,A.boardContent,A.boardUploadDate,A.boardUpdate,B.imgDataNo, B.uploadPath, B.imguuid, B.fileName  
+		FROM 
+			gallery as A RIGHT JOIN uploadImage as B  ON A.boardNo = B.boardNo
+		where
+			A.galleryId = #{galleryId}
+		group by boardNo
+		order by imgDataNo desc
+		limit #{startRowNum}, #{rowCount};
+	</select>
+	
+	<delete id="galleryTextDelete"  parameterType="com.photo.demo.vo.GalleryVO">
+		delete from gallery
+		
+		where boardNo = ${boardNo}
+
+	</delete>
+	
+	<delete id="galleryImgDelete"  parameterType="com.photo.demo.vo.UploadImageVO">
+		delete from uploadimage
+		where boardNo = ${boardNo}
+	</delete>
+	
+	<select id="ImgPathDataDelete" resultType="com.photo.demo.vo.UploadImageVO" >
+		select
+			imguuid,
+			fileName
+		from
+			uploadimage
+		where
+		 boardNo = ${boardNo}
+	</select>
+	
+	<select id="galleryTextUpdateGET" resultType="com.photo.demo.vo.GalleryVO" >
+		select
+			*
+		from
+			gallery
+		where
+			boardNo = #{boardNo}
+	</select>
+	
+	<select id="ImgPathDataSelect" resultType="com.photo.demo.vo.UploadImageVO" >
+		select
+			*
+		from
+			uploadimage
+		where
+		 boardNo = ${boardNo}
+	</select>
+	
+	<delete id="galleryimgUpdate"  parameterType="com.photo.demo.vo.UploadImageVO">
+		delete from uploadimage
+		where boardNo = ${boardNo}
+	</delete>
+	
+	<update id="galleryTextUpdatePOST" parameterType="com.photo.demo.vo.UploadImageVO">
+		update gallery set
+			boardTitle = #{boardTitle},
+			boardContent = #{boardContent},
+			boardUploadDate = sysdate()
+		where
+			boardNo = #{boardNo}
+	
+	</update>
+	
+	<select id="boardCount" resultType="int" >
+		select 
+			count(boardNo)
+		from
+			gallery
+		where
+			galleryId = #{galleryId}
+		
+	</select>
+
+	
+</mapper>
